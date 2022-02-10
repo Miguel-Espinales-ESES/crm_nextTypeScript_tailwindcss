@@ -13,24 +13,22 @@ const Sidebar: React.FC<Props> = () => {
 
     return (
         <aside className='p-5 bg-base-content md:h-full'>
-            <div>
-                <span className='text-2xl font-black text-white'>CRM Clientes</span>
-            </div>
+            <span className='text-2xl font-black text-white'>CRM Clientes</span>
             <nav className='mt-5 list-none'>
                 <NavItem
                     url='/'
                     label='Clientes'
-                    active={(router.pathname === '/' ) ? true : false}
+                    active={(router.pathname === '/') ? true : false}
                 />
                 <NavItem
                     url='/pedidos'
                     label='Pedidos'
-                    active={(router.pathname === '/pedidos' ) ? true : false}
+                    active={(router.pathname === '/pedidos') ? true : false}
                 />
-                 <NavItem
+                <NavItem
                     url='/productos'
                     label='Productos'
-                    active={(router.pathname === '/productos' ) ? true : false}
+                    active={(router.pathname === '/productos') ? true : false}
                 />
             </nav>
         </aside>

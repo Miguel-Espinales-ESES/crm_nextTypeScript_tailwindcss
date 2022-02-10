@@ -15,7 +15,7 @@ const Layout: React.FC<Props> = ({ children }) => {
 
     const contendType = {
         sidebar: ['/', '/pedidos', '/productos'],
-        auth: ['/login']
+        auth: ['/login', '/signIn']
     }
 
     // routing de next
@@ -44,15 +44,14 @@ const Layout: React.FC<Props> = ({ children }) => {
                         <div className='col-span-10 h-2/5 md:min-h-screen md:col-span-2'>
                             <Sidebar />
                         </div>
-                        <div className='h-screen col-span-10 p-5 md:col-span-8'>
-                            <main>
+                        <main>
+                            <div className='h-screen col-span-10 p-5 md:col-span-8'>
                                 {children}
-                            </main>
-                        </div>
+                            </div>
+                        </main>
                     </div>
                 ) : (
-                    <div>
-                        <p>activeLayout login</p>
+                    <div className='flex flex-col justify-center min-h-screen text-white bg-base-content'>
                         <main>
                             {children}
                         </main>
