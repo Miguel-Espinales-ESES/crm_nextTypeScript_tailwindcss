@@ -59,7 +59,6 @@ const Layout: React.FC<Props> = ({ children }) => {
                 )
             }
 
-
         </>
     )
 }

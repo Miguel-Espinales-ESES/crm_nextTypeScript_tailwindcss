@@ -3,7 +3,8 @@ import type { NextPage } from 'next'
 // components
 import Card from '../../components/Card'
 // => imput
-import InputItem, { TypeInput, validateStatus } from '../../components/InputItem'
+import InputItem, { TypeInput } from '../../components/InputItem'
+import Button, { validateStatus as validateStatusButton } from '../../components/Button'
 
 
 const Login: NextPage = () => {
@@ -20,10 +21,9 @@ const Login: NextPage = () => {
                                 <InputItem
                                     label='Email'
                                     placeholder='Emial@exmaple.com'
-                                    validateStatus={validateStatus.input_info}
                                     type={TypeInput.Email}
                                 />
-                                 <InputItem
+                                <InputItem
                                     label='Password'
                                     placeholder='Password User'
                                     type={TypeInput.Text}
@@ -31,7 +31,13 @@ const Login: NextPage = () => {
                             </form>
                         </div>
                         <div className="items-center w-full card-actions">
-                            <button className="w-full btn btn-primary">Iniciar Sesión</button>
+                            <Button
+                                shape='circle'
+                                className='w-full'
+                                validateStatus={validateStatusButton.btn_primary}
+                            >
+                                Iniciar Sesión
+                            </Button>
                         </div>
                     </Card>
                 </div>
