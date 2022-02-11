@@ -3,8 +3,12 @@ import type { NextPage } from 'next'
 // components
 import Card from '../../components/Card'
 // => imput
-import InputItem, { TypeInput } from '../../components/InputItem'
+import InputItem, { TypeInput, validateStatus } from '../../components/InputItem'
 import Button, { validateStatus as validateStatusButton } from '../../components/Button'
+
+// icon 
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
 
 
 const Login: NextPage = () => {
@@ -19,14 +23,21 @@ const Login: NextPage = () => {
                         <div className='text-base-content'>
                             <form className="form-control">
                                 <InputItem
+                                    icon={faEnvelope}
                                     label='Email'
                                     placeholder='Emial@exmaple.com'
                                     type={TypeInput.Email}
                                 />
                                 <InputItem
+                                    icon={faLock}
+                                    // validateStatus={validateStatus.input_primary}
                                     label='Password'
                                     placeholder='Password User'
                                     type={TypeInput.Text}
+                                // errorInput={{
+                                //     active: true,
+                                //     error: 'fdsafa'
+                                // }}
                                 />
                             </form>
                         </div>

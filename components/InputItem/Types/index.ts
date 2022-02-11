@@ -1,3 +1,5 @@
+import React from 'react'
+
 export type Props = {
     label?: string,
     type: TypeInput,
@@ -5,6 +7,7 @@ export type Props = {
     disabled?: boolean,
     className?: string,
     validateStatus?: validateStatus
+    icon? : React.ReactNode
     errorInput?: {
         active: boolean,
         error: string
@@ -18,11 +21,11 @@ export enum TypeInput {
 
 
 export enum validateStatus {
-    input_secondary = 'input-secondary',
-    input_accent = 'input-accent',
-    input_info = 'input-info',
-    input_success = 'input-success',
-    input_primary = 'input-primary',
-    input_warning = 'input-warning',
-    input_error = 'input-error'
+    input_secondary = 'secondary',
+    input_accent = 'accent',
+    input_info = 'info',
+    input_success = 'success',
+    input_primary = 'primary',
+    input_warning = 'warning',
+    input_error = 'error'
 }
