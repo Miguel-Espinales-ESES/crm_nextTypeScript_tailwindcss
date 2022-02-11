@@ -7,7 +7,7 @@ export type Props = {
     disabled?: boolean,
     className?: string,
     validateStatus?: validateStatus
-    icon? : React.ReactNode
+    Icon? : React.ReactNode
     errorInput?: {
         active: boolean,
         error: string

@@ -1,30 +1,59 @@
-import React from 'react'
+import React, { cloneElement } from 'react'
 // type props
 import { Props, TypeInput, validateStatus } from './Types'
 import { isUndefined } from 'lodash'
 
-// icon 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+const InputItem: React.FC<Props> = ({ type, label, disabled, placeholder, className: classNameInput, validateStatus: validateStatusClass, errorInput, Icon }) => {
 
-const InputItem: React.FC<Props> = ({ type, label, disabled, placeholder, className: classNameInput, validateStatus: validateStatusClass, errorInput, icon }) => {
+    const classNameText = () => {
+        if (errorInput?.active) {
+            return 'text-error'
+        } else {
+            switch (validateStatusClass) {
+                case 'primary': return 'text-primary'
+                case 'secondary': return 'text-secondary'
+                case 'accent': return 'text-accent'
+                case 'info': return 'text-info'
+                case 'success': return 'text-success'
+                case 'warning': return 'text-warning'
+                case 'error': return 'text-error'
+                default: return 'text-gray-400'
+            }
+        }
+    }
 
-    if (!!(icon)) {
+    const classInput = () => {
+        if (errorInput?.active) {
+            return 'input-error'
+        } else {
+            switch (validateStatusClass) {
+                case 'primary': return 'input-primary'
+                case 'secondary': return 'input-secondary'
+                case 'accent': return 'input-accent'
+                case 'info': return 'input-info'
+                case 'success': return 'input-success'
+                case 'warning': return 'input-warning'
+                case 'error': return 'input-error'
+                default: return ''
+            }
+        }
+    }
+
+    if (!!(Icon)) {
         return (
             <>
                 <label className="label">
                     <span className="label-text">{label}</span>
                 </label >
-                <div className={`relative block  ${!!(validateStatusClass) ? `text-${validateStatusClass}` : 'text-gray-400'}`}>
-                    <FontAwesomeIcon
-                        className="absolute w-8 h-8 transform -translate-y-1/2 pointer-events-none top-1/2 left-3"
-                        icon={icon}
-                    />
+                <div className={`relative block ${!!(validateStatusClass) ? classNameText() : 'text-gray-400'}`} >
+                    {
+                        cloneElement(Icon as React.ReactElement<any>, { className: 'absolute w-8 h-8 transform -translate-y-1/2 pointer-events-none top-1/2 left-3' })
+                    }
                     <input
                         disabled={(isUndefined(disabled)) ? disabled : false}
                         type={type}
                         placeholder={placeholder}
-                        className={`appearance-none form-input pl-14 block w-full px-4 py-3 input input-bordered ${classNameInput} input-${(errorInput?.active) ? validateStatus.input_error : validateStatusClass}`}
+                        className={`appearance-none form-input pl-14 block w-full px-4 py-3 input input-bordered ${!!(classNameInput) ? classNameInput : ''} ${classInput()}`}
                     />
                 </div>
                 {
