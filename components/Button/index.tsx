@@ -3,7 +3,7 @@ import { isUndefined } from 'lodash'
 // type props
 import { Props, validateStatus } from './Types'
 
-const Button: React.FC<Props> = ({ children, validateStatus, outline, disabled, size, className: classNameInput, shape, loading }) => {
+const Button: React.FC<Props> = ({ type, children, validateStatus, outline, disabled, size, className: classNameInput, shape, loading }) => {
 
     const sizeButton = () => {
         switch (size) {
@@ -38,6 +38,7 @@ const Button: React.FC<Props> = ({ children, validateStatus, outline, disabled, 
 
     return (
         <button
+            type={type}
             disabled={disabled}
             className={`btn ${(isUndefined(loading) ? '' : 'loading')} ${sizeButton()} ${shapeButton()} ${validateStatus} ${(outline) && 'btn-outline'} ${classNameInput}`}
         >

@@ -1,3 +1,6 @@
+
+
+
 export type Props = {
     validateStatus?: validateStatus,
     outline?: boolean,
@@ -6,6 +9,7 @@ export type Props = {
     size?: 'lg' | 'sm' | 'xs',
     shape?: 'circle' | 'round',
     loading?: boolean
+    type?: "button" | "submit" | "reset" | undefined
 }
 
 export enum validateStatus {
