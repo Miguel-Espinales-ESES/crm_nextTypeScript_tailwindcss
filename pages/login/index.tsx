@@ -25,12 +25,14 @@ const Login: NextPage = () => {
                                 <InputItem
                                     Icon={<FontAwesomeIcon icon={faEnvelope} />}
                                     label='Email'
+                                    idInputItem='email'
                                     placeholder='Emial@exmaple.com'
                                     type={TypeInput.Email}
                                 />
                                 <InputItem
+                                    idInputItem='password'
                                     Icon={<FontAwesomeIcon icon={faLock} />}
-                                   //  validateStatus={validateStatus.input_primary}
+                                    //  validateStatus={validateStatus.input_primary}
                                     label='Password'
                                     placeholder='Password User'
                                     type={TypeInput.Text}

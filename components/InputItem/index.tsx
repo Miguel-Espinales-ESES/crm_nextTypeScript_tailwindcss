@@ -3,7 +3,22 @@ import React, { cloneElement } from 'react'
 import { Props, TypeInput, validateStatus } from './Types'
 import { isUndefined } from 'lodash'
 
-const InputItem: React.FC<Props> = ({ type, label, disabled, placeholder, className: classNameInput, validateStatus: validateStatusClass, errorInput, Icon }) => {
+const InputItem: React.FC<Props> = (_) => {
+
+    const {
+        onChangeInput,
+        value,
+        idInputItem,
+        type,
+        label,
+        disabled,
+        placeholder,
+        className:
+        classNameInput,
+        validateStatus: validateStatusClass,
+        errorInput,
+        Icon
+    } = _
 
     const classNameText = () => {
         if (errorInput?.active) {
@@ -42,7 +57,7 @@ const InputItem: React.FC<Props> = ({ type, label, disabled, placeholder, classN
     if (!!(Icon)) {
         return (
             <div>
-                <label className="label">
+                <label htmlFor={idInputItem} className="label">
                     <span className="label-text">{label}</span>
                 </label >
                 <div className={`relative block ${!!(validateStatusClass) ? classNameText() : 'text-gray-400'}`} >
@@ -50,6 +65,9 @@ const InputItem: React.FC<Props> = ({ type, label, disabled, placeholder, classN
                         cloneElement(Icon as React.ReactElement<any>, { className: 'absolute w-8 h-8 transform -translate-y-1/2 pointer-events-none top-1/2 left-3' })
                     }
                     <input
+                        onChange={onChangeInput}
+                        value={value}
+                        id={idInputItem}
                         disabled={(isUndefined(disabled)) ? disabled : false}
                         type={type}
                         placeholder={placeholder}
@@ -68,10 +86,12 @@ const InputItem: React.FC<Props> = ({ type, label, disabled, placeholder, classN
     } else {
         return (
             <div>
-                <label className="label">
+                <label htmlFor={idInputItem} className="label">
                     <span className="label-text">{label}</span>
                 </label >
                 <input
+                    value={value}
+                    id={idInputItem}
                     disabled={(isUndefined(disabled)) ? disabled : false}
                     type={type}
                     placeholder={placeholder}

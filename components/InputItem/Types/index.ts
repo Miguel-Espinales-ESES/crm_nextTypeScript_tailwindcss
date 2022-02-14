@@ -3,11 +3,14 @@ import React from 'react'
 export type Props = {
     label?: string,
     type: TypeInput,
+    idInputItem: string,
     placeholder?: string,
+    value?: string
     disabled?: boolean,
     className?: string,
     validateStatus?: validateStatus
     Icon? : React.ReactNode
+    onChangeInput? : React.ChangeEventHandler<HTMLInputElement>,
     errorInput?: {
         active: boolean,
         error: string
@@ -16,7 +19,8 @@ export type Props = {
 
 export enum TypeInput {
     Text = 'text',
-    Email = 'email'
+    Email = 'email',
+    Password = 'password'
 }
 
 
