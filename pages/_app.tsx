@@ -1,10 +1,15 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 
+// componets
+import Layout from '../components/Layout'
+
 function MyApp({ Component, pageProps }: AppProps) {
-  return( 
+  return (
     <html data-theme="emerald">
-      <Component  {...pageProps} />
+      <Layout>
+        <Component  {...pageProps} />
+      </Layout>
     </html>
   )
 }
