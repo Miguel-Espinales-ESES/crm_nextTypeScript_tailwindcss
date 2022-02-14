@@ -41,7 +41,7 @@ const InputItem: React.FC<Props> = ({ type, label, disabled, placeholder, classN
 
     if (!!(Icon)) {
         return (
-            <>
+            <div>
                 <label className="label">
                     <span className="label-text">{label}</span>
                 </label >
@@ -63,11 +63,11 @@ const InputItem: React.FC<Props> = ({ type, label, disabled, placeholder, classN
                         </label>
                     )
                 }
-            </>
+            </div>
         )
     } else {
         return (
-            <>
+            <div>
                 <label className="label">
                     <span className="label-text">{label}</span>
                 </label >
@@ -84,7 +84,7 @@ const InputItem: React.FC<Props> = ({ type, label, disabled, placeholder, classN
                         </label>
                     )
                 }
-            </>
+            </div>
         )
     }
 }
