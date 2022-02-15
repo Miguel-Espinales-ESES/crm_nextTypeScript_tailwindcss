@@ -10,6 +10,7 @@ import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons'
 
 // Formik
 import { useFormik, FormikProps } from "formik";
+import * as yup from 'yup';
 
 // componets
 import Button, { validateStatus as validateStatusButton } from '../../components/Button'
@@ -19,13 +20,25 @@ const FormSigIn: React.FC<Props> = () => {
 
     const formik: FormikProps<typeForm> = useFormik<typeForm>({
         initialValues: {
-            nombre: 'nombre',
+            nombre: '',
             apellido: '',
             email: '',
             password: ''
         },
+        validationSchema: yup.object({
+            nombre: yup.string()
+                .required('Inserte el nombre'),
+            apellido: yup.string()
+                .required('Inserte el apellido'),
+            email: yup.string()
+                .email('Ingrese un email valido')
+                .required('Inserte un email valido'),
+            password: yup.string()
+                .required('Ingrese el password')
+                .min(6, 'El password debe ser de al menos 6 caracteres')
+        }),
         onSubmit: (values) => {
-            console.log('values formik: ' ,values)
+            console.log('values formik: ', values)
         }
     });
 
@@ -40,6 +53,12 @@ const FormSigIn: React.FC<Props> = () => {
                     placeholder='Nombre del Usuario'
                     type={TypeInput.Text}
                     onChangeInput={formik.handleChange}
+                    // validateStatus={validateStatus.input_primary}
+                    onBlurInput={formik.handleBlur}
+                    errorInput={{
+                        active: !!formik.errors.nombre && !!formik.touched.nombre,
+                        error: formik.errors.nombre
+                    }}
                 />
                 <InputItem
                     value={formik.values.email}
@@ -49,6 +68,11 @@ const FormSigIn: React.FC<Props> = () => {
                     placeholder='Emial@exmaple.com'
                     type={TypeInput.Email}
                     onChangeInput={formik.handleChange}
+                    onBlurInput={formik.handleBlur}
+                    errorInput={{
+                        active: !!formik.errors.email && !!formik.touched.email,
+                        error: formik.errors.email
+                    }}
                 />
                 <InputItem
                     value={formik.values.apellido}
@@ -58,6 +82,11 @@ const FormSigIn: React.FC<Props> = () => {
                     placeholder='Apellido del Usuario'
                     type={TypeInput.Text}
                     onChangeInput={formik.handleChange}
+                    onBlurInput={formik.handleBlur}
+                    errorInput={{
+                        active: !!formik.errors.apellido && !!formik.touched.apellido,
+                        error: formik.errors.apellido
+                    }}
                 />
                 <InputItem
                     value={formik.values.password}
@@ -67,6 +96,11 @@ const FormSigIn: React.FC<Props> = () => {
                     placeholder='Password User'
                     type={TypeInput.Password}
                     onChangeInput={formik.handleChange}
+                    onBlurInput={formik.handleBlur}
+                    errorInput={{
+                        active: !!formik.errors.password && !!formik.touched.password,
+                        error: formik.errors.password
+                    }}
                 />
             </div>
 
