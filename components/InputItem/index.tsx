@@ -7,6 +7,7 @@ const InputItem: React.FC<Props> = (_) => {
 
     const {
         onChangeInput,
+        onBlurInput,
         value,
         idInputItem,
         type,
@@ -24,16 +25,21 @@ const InputItem: React.FC<Props> = (_) => {
         if (errorInput?.active) {
             return 'text-error'
         } else {
-            switch (validateStatusClass) {
-                case 'primary': return 'text-primary'
-                case 'secondary': return 'text-secondary'
-                case 'accent': return 'text-accent'
-                case 'info': return 'text-info'
-                case 'success': return 'text-success'
-                case 'warning': return 'text-warning'
-                case 'error': return 'text-error'
-                default: return 'text-gray-400'
+            if(!!(validateStatusClass)) {
+                switch (validateStatusClass) {
+                    case 'primary': return 'text-primary'
+                    case 'secondary': return 'text-secondary'
+                    case 'accent': return 'text-accent'
+                    case 'info': return 'text-info'
+                    case 'success': return 'text-success'
+                    case 'warning': return 'text-warning'
+                    case 'error': return 'text-error'
+                    default: return 'text-gray-400'
+                }
+            } else{
+                return 'text-gray-400'
             }
+         
         }
     }
 
@@ -60,7 +66,7 @@ const InputItem: React.FC<Props> = (_) => {
                 <label htmlFor={idInputItem} className="label">
                     <span className="label-text">{label}</span>
                 </label >
-                <div className={`relative block ${!!(validateStatusClass) ? classNameText() : 'text-gray-400'}`} >
+                <div className={`relative block ${classNameText()}`} >
                     {
                         cloneElement(Icon as React.ReactElement<any>, { className: 'absolute w-8 h-8 transform -translate-y-1/2 pointer-events-none top-1/2 left-3' })
                     }
@@ -70,12 +76,13 @@ const InputItem: React.FC<Props> = (_) => {
                         id={idInputItem}
                         disabled={(isUndefined(disabled)) ? disabled : false}
                         type={type}
+                        onBlur={onBlurInput}
                         placeholder={placeholder}
                         className={`appearance-none form-input pl-14 block w-full px-4 py-3 input input-bordered ${!!(classNameInput) ? classNameInput : ''} ${classInput()}`}
                     />
                 </div>
                 {
-                    (errorInput) && (
+                    (errorInput?.active) && (
                         <label className="label">
                             <span className="label-text-alt text-accent">{errorInput.error}</span>
                         </label>
@@ -95,10 +102,12 @@ const InputItem: React.FC<Props> = (_) => {
                     disabled={(isUndefined(disabled)) ? disabled : false}
                     type={type}
                     placeholder={placeholder}
+                    onBlur={onBlurInput}
+                    onChange={onChangeInput}
                     className={`input input-bordered ${classNameInput} input-${(errorInput?.active) ? validateStatus.input_error : validateStatusClass}`}
                 />
                 {
-                    (errorInput) && (
+                    (errorInput?.active) && (
                         <label className="label">
                             <span className="label-text-alt text-accent">{errorInput.error}</span>
                         </label>

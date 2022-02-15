@@ -9,11 +9,12 @@ export type Props = {
     disabled?: boolean,
     className?: string,
     validateStatus?: validateStatus
-    Icon? : React.ReactNode
-    onChangeInput? : React.ChangeEventHandler<HTMLInputElement>,
+    Icon?: React.ReactNode
+    onChangeInput?: React.ChangeEventHandler<HTMLInputElement>,
+    onBlurInput?: React.FocusEventHandler<HTMLInputElement>,
     errorInput?: {
         active: boolean,
-        error: string
+        error?: string
     }
 }
 
