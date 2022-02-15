@@ -94,7 +94,6 @@ const FormSigIn: React.FC<Props> = () => {
                     Icon={<FontAwesomeIcon icon={faLock} />}
                     label='Password'
                     placeholder='Password User'
-                    type={TypeInput.Password}
                     onChangeInput={formik.handleChange}
                     onBlurInput={formik.handleBlur}
                     errorInput={{

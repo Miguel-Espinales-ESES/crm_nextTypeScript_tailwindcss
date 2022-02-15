@@ -25,7 +25,7 @@ const InputItem: React.FC<Props> = (_) => {
         if (errorInput?.active) {
             return 'text-error'
         } else {
-            if(!!(validateStatusClass)) {
+            if (!!(validateStatusClass)) {
                 switch (validateStatusClass) {
                     case 'primary': return 'text-primary'
                     case 'secondary': return 'text-secondary'
@@ -36,10 +36,10 @@ const InputItem: React.FC<Props> = (_) => {
                     case 'error': return 'text-error'
                     default: return 'text-gray-400'
                 }
-            } else{
+            } else {
                 return 'text-gray-400'
             }
-         
+
         }
     }
 

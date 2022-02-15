@@ -2,7 +2,7 @@ import React from 'react'
 
 export type Props = {
     label?: string,
-    type: TypeInput,
+    type?: TypeInput,
     idInputItem: string,
     placeholder?: string,
     value?: string
