@@ -17,7 +17,7 @@ const Login: NextPage = () => {
             <div className='flex justify-center mt-5'>
                 <div className='w-full max-w-sm'>
                     <Card
-                        title={<h1 className='text-2xl font-bold text-center text-base-content'>Login</h1>}
+                        title={<span className='text-2xl font-bold text-center text-base-content'>Login</span>}
                         className='bg-white shadow-2xl'
                     >
                         <div className='text-base-content'>

@@ -6,11 +6,11 @@ import Layout from '../components/Layout'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <html data-theme="emerald">
+    <div data-theme="emerald">
       <Layout>
         <Component  {...pageProps} />
       </Layout>
-    </html>
+    </div>
   )
 }
 
