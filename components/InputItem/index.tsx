@@ -74,7 +74,7 @@ const InputItem: React.FC<Props> = (_) => {
                         onChange={onChangeInput}
                         value={value}
                         id={idInputItem}
-                        disabled={(isUndefined(disabled)) ? disabled : false}
+                        disabled={(!!(disabled)) ? disabled : false}
                         type={type}
                         onBlur={onBlurInput}
                         placeholder={placeholder}

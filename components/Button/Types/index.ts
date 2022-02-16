@@ -1,5 +1,4 @@
-
-
+import React from 'react'
 
 export type Props = {
     validateStatus?: validateStatus,
@@ -10,6 +9,7 @@ export type Props = {
     shape?: 'circle' | 'round',
     loading?: boolean
     type?: "button" | "submit" | "reset" | undefined
+    onClickButton? : React.MouseEventHandler<HTMLButtonElement>
 }
 
 export enum validateStatus {
