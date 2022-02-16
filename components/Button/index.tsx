@@ -42,7 +42,9 @@ const Button: React.FC<Props> = ({ type, children, validateStatus, outline, disa
             disabled={disabled}
             className={`btn ${(isUndefined(loading) ? '' : 'loading')} ${sizeButton()} ${shapeButton()} ${validateStatus} ${(outline) && 'btn-outline'} ${classNameInput}`}
         >
-            {children}
+            <span className={`${!!loading && 'px-2'}`}>
+                {children}
+            </span>
         </button>
     )
 }

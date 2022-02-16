@@ -2,18 +2,17 @@ import React from 'react'
 // type props
 import { Props, typeForm } from './Types'
 import schemaFormSignIn from './Types/schemaYup'
-
-// => imput
-import InputItem, { TypeInput } from '../../components/InputItem'
 // icon 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons'
-
 // Formik
 import { useFormik, FormikProps } from "formik";
-
 // componets
 import Button, { validateStatus as validateStatusButton } from '../../components/Button'
+// => imput
+import InputItem, { TypeInput } from '../../components/InputItem'
+// apollo client
+import { useQuery, gql } from '@apollo/client'
 
 const FormSigIn: React.FC<Props> = () => {
 
@@ -29,6 +28,33 @@ const FormSigIn: React.FC<Props> = () => {
             console.log('values formik: ', values)
         }
     });
+
+    const QUERY = gql`
+        query obtenerProductos{
+        obtenerProductos{
+            id
+            nombre
+            precio
+            existencia
+        }
+    }
+    `
+
+    interface typeQueri  {
+        id? : string,
+		nombre?: string
+		precio?: number
+		existencia?: number
+		creado?: string
+    }
+
+    // prueba grapql
+    const { data, loading, error } = useQuery<typeQueri>(QUERY)
+
+
+    if(data){
+        console.log(data)
+    }
 
     return (
         <form onSubmit={formik.handleSubmit} className="form-control">
@@ -95,6 +121,8 @@ const FormSigIn: React.FC<Props> = () => {
                 <Button
                     type='submit'
                     shape='circle'
+                    // loading
+                    // disabled
                     className='w-full'
                     validateStatus={validateStatusButton.btn_primary}
                 >
