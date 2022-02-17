@@ -3,15 +3,12 @@ import { useRouter } from 'next/router'
 // type props
 import { Props, typeForm } from './Types'
 import schemaFormSignIn from './Types/schemaYup'
-// icon 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons'
 // Formik
 import { useFormik, FormikProps } from "formik";
 // componets
 import Button, { validateStatus as validateStatusButton } from '../../components/Button'
 // => imput
-import InputItem, { TypeInput } from '../../components/InputItem'
+import InputItem from '../../components/InputItem'
 // apollo client
 import { useMutation } from '@apollo/client'
 import { nuevoUsuarioMutation } from './Types/GQL'
@@ -19,6 +16,8 @@ import { nuevoUsuarioMutation } from './Types/GQL'
 import { toast } from 'react-toastify';
 // utils
 import HandleError from '../../utils/HandleError'
+// props
+import PropsInputItem from './PropsInputItem'
 
 const FormSigIn: React.FC<Props> = () => {
     // grapql mutation
@@ -43,7 +42,7 @@ const FormSigIn: React.FC<Props> = () => {
         }
     });
 
- 
+
     useEffect(() => {
         if (data) {
             toast.success("Usuario Creado!")
@@ -62,12 +61,8 @@ const FormSigIn: React.FC<Props> = () => {
             <form onSubmit={formik.handleSubmit} className="form-control">
                 <div className="grid grid-flow-row grid-rows-1 gap-4 md:grid-flow-col md:grid-rows-2">
                     <InputItem
+                        {...PropsInputItem.nombre}
                         value={formik.values.nombre}
-                        idInputItem='nombre'
-                        Icon={<FontAwesomeIcon icon={faUser} />}
-                        label='Nombre'
-                        placeholder='Nombre del Usuario'
-                        type={TypeInput.Text}
                         disabled={loading || !!data}
                         onChangeInput={formik.handleChange}
                         onBlurInput={formik.handleBlur}
@@ -77,12 +72,8 @@ const FormSigIn: React.FC<Props> = () => {
                         }}
                     />
                     <InputItem
+                        {...PropsInputItem.email}
                         value={formik.values.email}
-                        idInputItem='email'
-                        Icon={<FontAwesomeIcon icon={faEnvelope} />}
-                        label='Email'
-                        placeholder='Emial@exmaple.com'
-                        type={TypeInput.Email}
                         onChangeInput={formik.handleChange}
                         disabled={loading || !!data}
                         onBlurInput={formik.handleBlur}
@@ -92,12 +83,8 @@ const FormSigIn: React.FC<Props> = () => {
                         }}
                     />
                     <InputItem
+                        {...PropsInputItem.apellido}
                         value={formik.values.apellido}
-                        idInputItem='apellido'
-                        Icon={<FontAwesomeIcon icon={faUser} />}
-                        label='Apellido'
-                        placeholder='Apellido del Usuario'
-                        type={TypeInput.Text}
                         disabled={loading || !!data}
                         onChangeInput={formik.handleChange}
                         onBlurInput={formik.handleBlur}
@@ -107,12 +94,8 @@ const FormSigIn: React.FC<Props> = () => {
                         }}
                     />
                     <InputItem
+                        {...PropsInputItem.password}
                         value={formik.values.password}
-                        idInputItem='password'
-                        Icon={<FontAwesomeIcon icon={faLock} />}
-                        label='Password'
-                        placeholder='Password User'
-                        type={TypeInput.Password}
                         disabled={loading || !!data}
                         onChangeInput={formik.handleChange}
                         onBlurInput={formik.handleBlur}
