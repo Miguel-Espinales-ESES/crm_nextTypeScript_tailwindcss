@@ -1,6 +1,7 @@
+import { ApolloError } from '@apollo/client'
 import isArray from 'lodash/isArray'
 
-const HandleError = (graphQLErrors: any) => {
+const HandleError = (graphQLErrors: ApolloError) => {
   if (isArray(graphQLErrors.graphQLErrors)) {
     if (graphQLErrors.graphQLErrors.length) {
       return graphQLErrors.graphQLErrors[0].message

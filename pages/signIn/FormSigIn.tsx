@@ -36,7 +36,6 @@ const FormSigIn: React.FC<Props> = () => {
             try {
                 fechCrearUsuario({ variables: { 'input': { ...values } } })
             } catch (e) {
-                toast.error(HandleError(e))
                 console.log(e);
             }
         }
