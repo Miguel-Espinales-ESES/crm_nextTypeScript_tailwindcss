@@ -40,16 +40,16 @@ const Layout: React.FC<Props> = ({ children }) => {
 
             {
                 (activeLayout) ? (
-                    <div className='grid h-full grid-cols-10 gap-4 bg-gray-200 md:min-h-screen'>
-                        <div className='col-span-10 h-2/5 md:min-h-screen md:col-span-2'>
-                            <Sidebar />
-                        </div>
-                        <main>
-                            <div className='h-screen col-span-10 p-5 md:col-span-8'>
+                    <main>
+                        <div className='grid h-full grid-cols-12 gap-4 bg-gray-200 md:min-h-screen'>
+                            <div className='sticky top-0 z-50 col-span-12 lg:min-h-screen lg:col-span-2'>
+                                <Sidebar />
+                            </div>
+                            <div className='h-screen col-span-12 p-5 lg:col-span-10'>
                                 {children}
                             </div>
-                        </main>
-                    </div>
+                        </div>
+                    </main>
                 ) : (
                     <div className='flex flex-col justify-center min-h-screen text-white bg-base-content'>
                         <main>
