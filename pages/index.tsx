@@ -1,8 +1,5 @@
 import type { NextPage } from 'next'
 
-// componets
-import Layout from '../components/Layout'
-
 const Home: NextPage = () => {
   return (
     <div className='w-full'>

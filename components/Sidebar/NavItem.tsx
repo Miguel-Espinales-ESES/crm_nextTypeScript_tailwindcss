@@ -5,7 +5,7 @@ import { Props } from './Types'
 const NavItem: React.FC<Props> = ({ label, url, active, Icon }) => {
     const router = useRouter()
     return (
-        <li onClick={() => router.push(url)} className={`${(active) ? 'p-1 bg-primary' : 'hover:bg-primary-content hover:text-base-content'} cursor-pointer my-2 text-white transition duration-75 rounded text-ellipsis whitespace-nowrap`}>
+        <li onClick={() => router.push(url)} className={`${(active) ? 'bg-primary' : 'hover:bg-primary-content hover:text-base-content'} cursor-pointer my-2 text-white transition duration-75 rounded text-ellipsis whitespace-nowrap`}>
             <div className='flex flex-row gap-2 py-2 transition duration-200 ease-out hover:ease-in'>
                 <span className='ml-1'>
                     {

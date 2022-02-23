@@ -1,11 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router'
 // componets
-import NavItem from './NavItem'
 import ContendSidebar from './ContendSIdebar'
-// icon 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserGroup, faShoppingCart, faBoxesStacked } from '@fortawesome/free-solid-svg-icons'
 
 type Props = {}
 
@@ -22,7 +18,7 @@ const Sidebar: React.FC<Props> = () => {
             </aside>
             {/* // Responsive Sidebar  */}
             <aside className='block h-full lg:hidden bg-base-content'>
-                <div tabIndex={0} className="text-white bg-base-content collapse collapse-plus">
+                <div tabIndex={0} className="text-white bg-base-content collapse collapse-arrow">
                     <input type="checkbox" />
                     <div className="text-xl font-medium collapse-title">
                         <span className='text-2xl font-black text-white'>CRM Clientes</span>
