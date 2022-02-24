@@ -12,9 +12,9 @@ const ContendSidebar = () => {
     const ListNavItem = [
         <NavItem
             key={0}
-            url='/'
+            url='/clientes'
             label='Clientes'
-            active={(router.pathname === '/') ? true : false}
+            active={(router.pathname === '/clientes') ? true : false}
             Icon={<FontAwesomeIcon icon={faUserGroup} />}
         />,
         <NavItem
@@ -34,7 +34,7 @@ const ContendSidebar = () => {
     ]
 
     return (
-        <nav className={`mt-5 list-none ${ListNavItem.length >= 8 ? 'h-[40vh]' : ''} `}>
+        <nav className={`list-none ${ListNavItem.length >= 8 ? 'h-[40vh]' : ''} `}>
             {ListNavItem.map((Item) => Item)}
         </nav>
     )

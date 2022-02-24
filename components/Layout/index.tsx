@@ -14,7 +14,7 @@ const Layout: React.FC<Props> = ({ children }) => {
     const [activeLayout, setActiveLayout] = useState<boolean>()
 
     const contendType = {
-        sidebar: ['/', '/pedidos', '/productos'],
+        sidebar: ['/', '/pedidos', '/productos', '/clientes'],
         auth: ['/login', '/signIn']
     }
 

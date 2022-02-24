@@ -2,6 +2,12 @@ import React from 'react';
 import { useRouter } from 'next/router'
 // componets
 import ContendSidebar from './ContendSIdebar'
+import HomeButton from './HomeButton'
+import NavItem from './NavItem'
+
+// icon 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
 
 type Props = {}
 
@@ -12,9 +18,13 @@ const Sidebar: React.FC<Props> = () => {
 
     return (
         <>
-            <aside className='hidden p-5 lg:block bg-base-content md:h-full'>
-                <span className='text-2xl font-black text-white'>CRM Clientes</span>
-                <ContendSidebar />
+            <aside className='hidden h-full lg:block bg-base-content'>
+                <div className='flex items-center justify-center h-20'>
+                    <HomeButton />
+                </div>
+                <div className='px-5 md:h-full'>
+                    <ContendSidebar />
+                </div>
             </aside>
             {/* // Responsive Sidebar  */}
             <aside className='block h-full lg:hidden bg-base-content'>
@@ -23,7 +33,14 @@ const Sidebar: React.FC<Props> = () => {
                     <div className="text-xl font-medium collapse-title">
                         <span className='text-2xl font-black text-white'>CRM Clientes</span>
                     </div>
-                    <div className="overflow-auto collapse-content">
+                    <div className="overflow-auto list-none collapse-content">
+                        <NavItem
+                            key={0}
+                            url='/'
+                            label='Inicio'
+                            active={(router.pathname === '/') ? true : false}
+                            Icon={<FontAwesomeIcon icon={faHome} />}
+                        />
                         <ContendSidebar />
                     </div>
                 </div>
